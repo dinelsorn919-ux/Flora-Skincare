@@ -37,7 +37,7 @@
         </div>
     </section>
 
-    <!-- Best Seller / Product Grid Section (Handles search results or listings uniformly) -->
+    <!-- Best Seller / Product Grid Section -->
     <section class="max-w-6xl mx-auto px-6 py-12">
         <h2 class="font-display text-2xl md:text-3xl text-ink mb-6">Products</h2>
 
@@ -52,7 +52,7 @@
         </div>
     </section>
 
-    <!-- Ingredient Spotlight Section -->
+   <!--  Ingredient Spotlight Section 
     <section class="max-w-6xl mx-auto px-6 py-12 border-t border-line grid md:grid-cols-3 gap-8 items-center">
         <div class="aspect-square bg-forest/5 border border-line rounded-sm overflow-hidden">
             <img src="{{ asset('image/f2.PNG') }}" alt="Flora-SKinCare" class="w-full h-full object-cover">
@@ -64,5 +64,6 @@
             </p>
         </div>
     </section>
+    -->
 
 @endsection

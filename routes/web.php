@@ -7,7 +7,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\StorefrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
-
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\UserController;
 
 // Public storefront — anyone can browse.
 Route::get('/', [StorefrontController::class, 'home'])->name('home');
@@ -44,4 +45,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 //Admin area-full category CRUD, staff only
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('categories', CategoryController::class);
+});
+//Admin area-full User management, staff only
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', AdminUserController::class);
+});
+//user Profile
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [UserController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [UserController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [UserController::class, 'update'])->name('profile.update');
 });

@@ -55,7 +55,9 @@
                     @if (auth()->user()->isAdmin())
                         <a href="{{ route('admin.products.index') }}" class="text-ink/80 hover:text-forest transition-colors">Admin</a>
                     @endif
-                    <span class="text-ink/50 hidden sm:inline">{{ auth()->user()->name }}</span>
+                    <a href="{{ route('profile.edit') }}" class="text-ink/80 hover:text-forest transition-colors font-medium">
+                        {{ auth()->user()->name }}
+                    </a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="text-ink/50 hover:text-clay">Log out</button>
@@ -83,7 +85,7 @@
     <main>
         @yield('content')
     </main>
-    <!------footer-------->
+
     <footer class="border-t border-line mt-24">
         <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
             <div>
@@ -93,9 +95,9 @@
             <div>
                 <p class="text-ink mb-3">Social Media</p>
                 <ul class="space-y-2 text-ink/70">
-                    <li><a href="https://www.instagram.com/floraskincarehttps://www.facebook.com/share/1Sbh8JH8wk/?mibextid=wwXIfr" target="_blank" class="hover:text-forest">Instagram</a></li>
-                    <li><a href="https://www.facebook.com/share/1Sbh8JH8wk/?mibextid=wwXIfr" target="_blank" class="hover:text-forest">Facebook</a></li>
-                    <li><a href="" target="_blank" class="hover:text-forest">TikTok</a></li>
+                    <li><a href="https://www.instagram.com/floraskincare" target="_blank" class="hover:text-forest">Instagram</a></li>
+                    <li><a href="https://www.facebook.com" target="_blank" class="hover:text-forest">Facebook</a></li>
+                    <li><a href="#" target="_blank" class="hover:text-forest">TikTok</a></li>
                 </ul>
             </div>
             <div>

@@ -5,6 +5,13 @@
 @section('content')
     <div class="max-w-6xl mx-auto px-6 pt-10 pb-16">
         
+        <!-- Header / Back Button Section -->
+        <div class="mb-6">
+            <a href="{{ route('home') }}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink/70 hover:text-forest transition-colors bg-white border border-line/80 px-4 py-2.5 rounded-xl shadow-2xs">
+                &larr; Back to Homepage
+            </a>
+        </div>
+        
         <!-- Category Title & Horizontal Category Pills -->
         <div class="mb-8">
             <h1 class="font-display text-3xl text-ink mb-4">{{ $categoryLabel }}</h1>
@@ -31,21 +38,31 @@
                             : ($product->image ? asset('storage/' . ltrim($product->image, '/storage/')) : null);
                     @endphp
 
-                    <div class="bg-white border border-line rounded-md p-3 flex flex-col justify-between hover:border-forest transition-all">
+                    <div class="bg-white border border-line rounded-md flex flex-col justify-between hover:border-forest transition-all overflow-hidden shadow-sm group">
                         <div>
-                            @if($imageUrl)
-                                <div class="w-full h-36 border border-line rounded-sm bg-white p-2 flex items-center justify-center mb-3 overflow-hidden">
-                                    <img src="{{ $imageUrl }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
-                                </div>
-                            @else
-                                <div class="w-full h-36 border border-line rounded-sm bg-forest/5 p-2 flex items-center justify-center mb-3 text-xs text-forest/60">No image</div>
-                            @endif
+                            <!-- Clickable Image to Product Detail -->
+                            <a href="{{ route('product.show', $product->slug ?? $product->id) }}">
+                                @if($imageUrl)
+                                    <div class="w-full h-52 bg-white p-3 flex items-center justify-center overflow-hidden relative">
+                                        <img src="{{ $imageUrl }}" alt="{{ $product->name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
+                                    </div>
+                                @else
+                                    <div class="w-full h-52 bg-forest/5 flex items-center justify-center text-xs text-forest/60">No image</div>
+                                @endif
+                            </a>
 
-                            <h3 class="text-xs font-medium text-ink line-clamp-1 mb-1 text-center">{{ $product->name }}</h3>
-                            <p class="text-[11px] text-ink/60 line-clamp-1 mb-2 text-center">{{ $product->description }}</p>
+                            <div class="p-3">
+                                <!-- Clickable Title to Product Detail -->
+                                <h3 class="text-xs font-medium text-ink line-clamp-1 mb-1 text-center">
+                                    <a href="{{ route('product.show', $product->slug ?? $product->id) }}" class="hover:text-forest transition-colors">
+                                        {{ $product->name }}
+                                    </a>
+                                </h3>
+                                <p class="text-[11px] text-ink/60 line-clamp-1 mb-2 text-center">{{ $product->description }}</p>
+                            </div>
                         </div>
                         
-                        <div>
+                        <div class="p-3 pt-0">
                             <div class="flex items-center justify-center gap-2 mb-3">
                                 <span class="text-xs font-semibold text-ink">${{ number_format($product->price, 2) }}</span>
                                 @if(isset($product->compare_price) && $product->compare_price > $product->price)

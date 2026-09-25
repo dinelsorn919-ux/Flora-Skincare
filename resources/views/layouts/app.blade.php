@@ -55,7 +55,8 @@
                     @if (auth()->user()->isAdmin())
                         <a href="{{ route('admin.products.index') }}" class="text-ink/80 hover:text-forest transition-colors">Admin</a>
                     @endif
-                    <a href="{{ route('profile.edit') }}" class="text-ink/80 hover:text-forest transition-colors font-medium">
+                    <!-- Changed from profile.edit to profile.show -->
+                    <a href="{{ route('profile.show') }}" class="text-ink/80 hover:text-forest transition-colors font-medium">
                         {{ auth()->user()->name }}
                     </a>
                     <form action="{{ route('logout') }}" method="POST">

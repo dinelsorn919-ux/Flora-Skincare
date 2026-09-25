@@ -4,12 +4,12 @@
         : ($product->image ? asset('storage/' . ltrim($product->image ?? '', '/storage/')) : null);
 @endphp
 
-<div x-data="{ openModal: false }" class="group flex flex-col items-center text-center border border-line rounded-md p-3 bg-white hover:border-forest transition-all relative w-full">
+<div x-data="{ openModal: false }" class="group flex flex-col items-center text-center border border-line rounded-md bg-white hover:border-forest transition-all relative w-full overflow-hidden shadow-sm">
     
-    <!-- Thumbnail: Click to open modal -->
-    <div @click.prevent="openModal = true" class="w-full h-48 border border-line rounded-sm bg-white p-2 flex items-center justify-center mb-3 overflow-hidden cursor-pointer">
+    <!-- Thumbnail: Show full picture without cropping -->
+    <div @click.prevent="openModal = true" class="w-full h-64 bg-white p-3 flex items-center justify-center overflow-hidden cursor-pointer relative">
         @if(!empty($product->image))
-            <img src="{{ $imageUrl }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
+            <img src="{{ $imageUrl }}" alt="{{ $product->name }}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
         @else
             <div class="w-full h-full flex items-center justify-center bg-forest/5 text-forest/60 text-xs">
                 No image
@@ -18,7 +18,7 @@
     </div>
 
     <!-- Details -->
-    <div class="flex-1 flex flex-col items-center w-full">
+    <div class="flex-1 flex flex-col items-center w-full p-3">
         <button type="button" @click.prevent="openModal = true" class="font-display text-xs font-medium text-ink hover:text-forest mb-1 line-clamp-1 bg-transparent border-none cursor-pointer text-center w-full">
             {{ $product->name }}
         </button>
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Add to Cart Form -->
-    <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-auto w-full">
+    <form action="{{ route('cart.add', $product) }}" method="POST" class="mt-auto w-full px-3 pb-3">
         @csrf
         <button type="submit" class="w-full bg-forest text-bone text-[11px] py-1.5 rounded-sm hover:bg-forestdark transition-colors">
             Add to Cart
@@ -53,8 +53,8 @@
                 ✕
             </button>
 
-            <!-- Modal Left: Image -->
-            <div class="w-full md:w-1/2 h-80 border border-line rounded-sm bg-white p-4 flex items-center justify-center overflow-hidden">
+            <!-- Modal Left: Image (Full picture) -->
+            <div class="w-full md:w-1/2 h-80 border border-line rounded-sm bg-white p-4 overflow-hidden flex items-center justify-center">
                 @if(!empty($product->image))
                     <img src="{{ $imageUrl }}" alt="{{ $product->name }}" class="w-full h-full object-contain">
                 @else

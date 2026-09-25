@@ -9,7 +9,10 @@ class StorefrontController extends Controller
 {
     public function home()
 {
-    $products = Product::latest()->paginate(30);
+    // កែប្រែត្រង់នេះ ដើម្បីឱ្យអថេរ $products ទាញយកតែផលិតផល Featured
+    $products = Product::where('is_featured', 1)->latest()->paginate(30);
+    
+    // ឬប្រសិនបើអ្នកនៅតែចង់រក្សាទុក $featured ទុកប្រើប្រាស់ផ្សេង
     $featured = Product::where('is_featured', 1)->latest()->take(30)->get();
 
     return view('storefront.home', compact('products', 'featured'));

@@ -52,18 +52,6 @@
         </div>
     </section>
 
-   <!--  Ingredient Spotlight Section 
-    <section class="max-w-6xl mx-auto px-6 py-12 border-t border-line grid md:grid-cols-3 gap-8 items-center">
-        <div class="aspect-square bg-forest/5 border border-line rounded-sm overflow-hidden">
-            <img src="{{ asset('image/f2.PNG') }}" alt="Flora-SKinCare" class="w-full h-full object-cover">
-        </div>
-        <div class="md:col-span-2">
-            <h3 class="font-display text-2xl text-ink mb-3">This month's ingredient: bakuchiol</h3>
-            <p class="text-ink/70 max-w-lg">
-                A plant compound that behaves like retinol without the peeling or sun sensitivity. It works slower, but it works — most people see smoother texture within six weeks.
-            </p>
-        </div>
-    </section>
-    -->
+   
 
 @endsection

@@ -5,11 +5,6 @@
         
         <!-- Header Section -->
         <div class="flex items-center justify-between mb-8">
-           <!--- <div>
-                <h1 class="font-display text-3xl text-ink tracking-tight">Edit Profile</h1>
-                <p class="text-sm text-ink/60 mt-1">Update your account information, avatar, and password.</p>
-            </div>
-            --->
             <a href="{{ route('profile.show') }}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink/70 hover:text-forest transition-colors bg-white border border-line/80 px-4 py-2.5 rounded-xl shadow-2xs">
                 &larr; Back to Profile
             </a>

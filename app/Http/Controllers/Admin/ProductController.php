@@ -11,12 +11,11 @@ use Illuminate\Support\Str;
 class ProductController extends Controller
 {
     public function index()
-    {
-        $products = Product::latest()->paginate(10);
-        // Set pagination limit to 10 products per page
-        //$products = $query->paginate(10)->withQueryString();
+   {
+    
+    $products = Product::latest()->paginate(10);
 
-        return view('admin.products.index', compact('products'));
+    return view('admin.products.index', compact('products'));
     }
 
     public function create()
